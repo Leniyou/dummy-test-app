@@ -138,7 +138,7 @@ serve -s build
 
 Este último nos indicará el URL de la aplicación: http://localhost:3000
 
-![app-local](Printscreens/App-Local/image.png)
+![app-local](Printscreens/App-Local/app-local.png)
 
 #### 2.2. Configuración de Prueba Unitaria (opcional)
 
