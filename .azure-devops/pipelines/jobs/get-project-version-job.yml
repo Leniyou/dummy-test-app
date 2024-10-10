@@ -1,0 +1,6 @@
+# - get-project-version-job.yml
+---
+jobs:
+  - job: GetProjectVersion
+    steps:
+      - template: ../tasks/get-project-version-task.yml

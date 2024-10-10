@@ -1,0 +1,6 @@
+# - bash-job.yml
+---
+jobs:
+  - job: BashTasks
+    steps:
+      - template: ../tasks/bash-task.yml

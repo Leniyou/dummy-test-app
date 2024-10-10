@@ -1,0 +1,6 @@
+# - sonarqube-job.yml
+---
+jobs:
+  - job: SonarQube
+    steps:
+      - template: ../tasks/sonarqube-task.yml

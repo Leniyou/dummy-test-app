@@ -1,0 +1,7 @@
+# - build-and-push-image-stage.yml
+---
+stages:
+  - stage: BuildAndPushImage
+    displayName: 'Build and Push Docker Image'
+    jobs:
+      - template: ../jobs/build-and-push-image-job.yml

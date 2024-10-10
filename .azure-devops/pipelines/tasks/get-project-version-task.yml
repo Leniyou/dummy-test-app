@@ -1,0 +1,22 @@
+# - get-project-version-task.yml
+---
+parameters:
+  - name: projectDir
+    type: string
+    default: '$(projectDir)'
+  - name: scriptsPath
+    type: string
+    default: '$(scriptsPath)'
+
+steps:
+  - checkout: self
+    persistCredentials: true
+    clean: true
+
+  - task: Bash@3
+    displayName: 'Get project version from package.json'
+    inputs:
+      targetType: filePath
+      filePath: '${{ parameters.scriptsPath }}/get-project-version.sh'
+      arguments: >
+        '${{ parameters.projectDir }}'

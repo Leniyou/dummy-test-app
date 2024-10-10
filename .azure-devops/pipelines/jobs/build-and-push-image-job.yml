@@ -1,0 +1,6 @@
+# - build-and-push-image-job.yml
+---
+jobs:
+  - job: BuildAndPushImage
+    steps:
+      - template: ../tasks/build-and-push-image-task.yml

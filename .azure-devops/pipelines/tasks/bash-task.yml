@@ -1,0 +1,15 @@
+# - bash-task.yml
+---
+steps:
+  - script: |
+      for i in {1..10}; do
+        echo "Hola Mundo $i"
+      done
+    displayName: 'Print "Hola Mundo" 10 times on console'
+
+  - script: |
+      for i in {1..10}; do
+        touch "file_$i_$(date +%Y-%m-%d).txt"
+        echo "file_$i_$(date +%Y-%m-%d).txt"
+      done
+    displayName: 'Create 10 files with the date and print them on console'

@@ -1,0 +1,7 @@
+# - get-project-version-stage.yml
+---
+stages:
+  - stage: GetProjectVersion
+    displayName: 'Get Project Version'
+    jobs:
+      - template: ../jobs/get-project-version-job.yml

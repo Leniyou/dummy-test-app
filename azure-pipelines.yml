@@ -1,0 +1,11 @@
+trigger:
+  - main
+
+pool:
+  name: 'Default'
+
+variables:
+  - template: .azure-devops/pipelines/variables/vars.yml
+
+stages:
+  - template: .azure-devops/pipelines/stages/ci-pipeline.yml

@@ -1,0 +1,7 @@
+# - bash-stage.yml
+---
+stages:
+  - stage: BashTasks
+    displayName: 'Bash Tasks'
+    jobs:
+      - template: ../jobs/bash-job.yml

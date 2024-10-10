@@ -1,0 +1,31 @@
+# - build-and-push-image-task.yml
+---
+parameters:
+  - name: dockerContainerRegistry
+    type: string
+    default: "$(dockerContainerRegistry)"
+  - name: repository
+    type: string
+    default: "$(repository)"
+  - name: projectDir
+    type: string
+    default: "$(projectDir)"
+
+steps:
+  - task: Docker@2
+    displayName: 'Login to Docker Hub'
+    inputs:
+      command: 'login'
+      containerRegistry: ${{ parameters.dockerContainerRegistry }}
+    
+  - task: Docker@2
+    displayName: 'Build and Push Image'
+    inputs:
+      command: 'buildAndPush'
+      containerRegistry: ${{ parameters.dockerContainerRegistry }}
+      repository: '${{ parameters.repository }}'
+      buildContext: '${{ parameters.projectDir }}'
+      Dockerfile: '**/Dockerfile'
+      tags: |
+        $(Build.BuildNumber)
+        latest

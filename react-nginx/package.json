@@ -1,0 +1,41 @@
+{
+  "name": "dummy-test-app",
+  "version": "0.1.10",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^5.0.0",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest-junit": "^16.0.0",
+    "jest-junit-reporter": "^1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:ci": "react-scripts test --ci --testResultsProcessor='jest-junit' --coverage --silent --watchAll=false --passWithNoTests --detectOpenHandles",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "outputDirectory": "./test-results",
+    "outputName": "junit.xml",
+    "uniqueOutputName": "false",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": "true"
+  }
+}

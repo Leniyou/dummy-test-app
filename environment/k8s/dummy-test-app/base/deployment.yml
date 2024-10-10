@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummy-test-app
+  labels:
+    app: dummy-test-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dummy-test-app
+  template:
+    metadata:
+      labels:
+        app: dummy-test-app
+    spec:
+      containers:
+        - name: dummy-test-app
+          image: leniyou/dummy-test-app:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: secret-dummy-test-app
+          resources:

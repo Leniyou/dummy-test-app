@@ -1,0 +1,7 @@
+# - sonarqube-stage.yml
+---
+stages:
+  - stage: SonarQubeAnalysis
+    displayName: 'SonarQube Analysis'
+    jobs:
+      - template: ../jobs/sonarqube-job.yml

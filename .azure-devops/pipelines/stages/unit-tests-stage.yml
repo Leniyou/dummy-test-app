@@ -1,0 +1,7 @@
+# - unit-tests-stage.yml
+---
+stages:
+  - stage: UnitTest
+    displayName: 'Unit Tests'
+    jobs:
+      - template: ../jobs/unit-tests-job.yml

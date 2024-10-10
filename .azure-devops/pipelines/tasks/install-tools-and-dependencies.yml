@@ -1,0 +1,29 @@
+# - install-tools-and-dependencies.yml
+---
+parameters:
+  - name: nodeVersion
+    type: string
+    default: "$(nodeVersion)"
+  - name: dotnetVersion
+    type: string
+    default: "$(dotnetVersion)"
+  - name: projectDir
+    type: string
+    default: '$(projectDir)'
+
+steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET ${{ parameters.dotnetVersion }} SDK'
+    inputs:
+      packageType: 'sdk'
+      version: '${{ parameters.dotnetVersion }}' 
+
+  - task: UseNode@1
+    displayName: 'Install Node.js ${{ parameters.nodeVersion }}'
+    inputs:
+      version: '${{ parameters.nodeVersion }}'
+
+  - script: |
+      cd ${{ parameters.projectDir }}
+      npm ci
+    displayName: 'Install NPM Dependencies'

@@ -1,0 +1,24 @@
+---
+namespace: dummy-test-app-qa
+
+nameSuffix: "-qa"
+
+resources:
+  - ../../base
+  - namespace.yml
+
+secretGenerator:
+  - name: secret-dummy-test-app
+    envs:
+    - secret/dummy-test-app.env
+
+patches:
+  - target:
+      kind: Ingress
+      name: dummy-test-app-ingress
+    path: patch/ingress-patch.yml
+
+images:
+  - name: dummy-test-app
+    newName: leniyou/dummy-test-app
+    newTag: latest

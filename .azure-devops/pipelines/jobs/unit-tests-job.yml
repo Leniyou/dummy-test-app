@@ -1,0 +1,6 @@
+# - unit-tests-job.yml
+---
+jobs:
+  - job: UnitTests
+    steps:
+      - template: ../tasks/unit-tests-task.yml

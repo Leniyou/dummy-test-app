@@ -1,0 +1,42 @@
+# - sonarqube-task.yml
+---
+parameters:
+  - name: projectKey
+    type: string
+    default: "$(projectKey)"
+  - name: sonarQubeServiceConnection
+    type: string
+    default: "$(sonarQubeServiceConnection)"
+  - name: testArtifactName
+    type: string
+    default: "$(testArtifactName)"
+  - name: testArtifactTargetPath
+    type: string
+    default: '$(testArtifactTargetPath)'
+
+steps:
+  - checkout: self
+    fetchDepth: 0 
+
+  - task: DownloadPipelineArtifact@2
+    displayName: 'Download Test Artifact'
+    inputs:
+      artifact: '${{ parameters.testArtifactName }}'
+      path: '${{ parameters.testArtifactTargetPath }}'
+
+  - task: SonarQubePrepare@6
+    displayName: 'Prepare SonarQube Analysis'
+    inputs:
+      SonarQube: '${{ parameters.sonarQubeServiceConnection }}'
+      scannerMode: 'CLI'
+      configMode: 'manual'
+      cliProjectKey: '${{ parameters.projectKey }}'
+      cliProjectName: '${{ parameters.projectKey }}'
+
+  - task: SonarQubeAnalyze@6
+    displayName: 'Run SonarQube Analysis'
+
+  - task: SonarQubePublish@6
+    displayName: 'Publish SonarQube Analysis Results'
+    inputs:
+      pollingTimeoutSec: '300'

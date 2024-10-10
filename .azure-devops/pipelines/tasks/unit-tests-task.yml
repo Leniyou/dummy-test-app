@@ -1,0 +1,53 @@
+# - unit-tests-task.yml
+---
+parameters:
+  - name: projectDir
+    type: string
+    default: '$(projectDir)'
+  - name: testResultsFormat
+    type: string
+    default: '$(testResultsFormat)'
+  - name: testResultsFiles
+    type: string
+    default: '$(testResultsFiles)'
+  - name: coverageReports
+    type: string
+    default: '$(coverageReports)'
+  - name: coverageTargetDir
+    type: string
+    default: '$(coverageTargetDir)'
+  - name: testArtifactName
+    type: string
+    default: '$(testArtifactName)'
+  - name: testArtifactTargetPath
+    type: string
+    default: '$(testArtifactTargetPath)'
+
+steps:
+  - template: install-tools-and-dependencies.yml
+  
+  - script: |
+      cd ${{ parameters.projectDir }}
+      npm run test:ci
+    displayName: "Run Unit Tests"
+
+  - task: PublishTestResults@2
+    displayName: "Publish Test Results"
+    inputs:
+      testResultsFormat: "${{ parameters.testResultsFormat}}"
+      testResultsFiles: '${{ parameters.testResultsFiles}}'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+
+  - task: reportgenerator@5
+    displayName: "Publish Code Coverage"
+    inputs:
+      reports: '${{ parameters.coverageReports }}'
+      targetdir: '${{ parameters.coverageTargetDir }}'
+      publishCodeCoverageResults: true
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Test Artifact'
+    inputs:
+      artifactName: '${{ parameters.testArtifactName }}'
+      targetPath: '${{ parameters.testArtifactTargetPath }}'

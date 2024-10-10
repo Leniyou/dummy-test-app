@@ -1,0 +1,28 @@
+# - vars.yml
+---
+variables:
+  # for pipelines (global)
+  projectKey: "dummy-test-app"
+
+  # for install-tools-and-dependencies
+  nodeVersion: "20.x"
+  dotnetVersion: "8.x"
+
+  # for unit-tests
+  projectDir: '$(System.DefaultWorkingDirectory)/react-nginx'
+  testResultsFormat: "JUnit"
+  testResultsFiles: '$(System.DefaultWorkingDirectory)/react-nginx/test-results/junit.xml'
+  coverageReports: '$(System.DefaultWorkingDirectory)/react-nginx/coverage/clover.xml'
+  coverageTargetDir: '$(System.DefaultWorkingDirectory)/react-nginx/coverage'
+  testArtifactName: "react-nginx-test-artifact"
+  testArtifactTargetPath: '$(System.DefaultWorkingDirectory)/react-nginx/test-results'
+
+  # for sonarqube
+  sonarQubeServiceConnection: "sonarQubeServiceConnection" ## Nombre del service connection de sonarqube
+
+  # for build-and-push-image
+  dockerContainerRegistry: "dockerContainerRegistry" ## Nombre del service connection de Docker Registry
+  repository: "leniyou/dummy-test-app"
+
+  # for update-version
+  scriptsPath: '$(System.DefaultWorkingDirectory)/scripts'

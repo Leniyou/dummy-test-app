@@ -1,0 +1,8 @@
+# - ci-pipeline.yml
+---
+stages:
+  - template: ./get-project-version-stage.yml
+  - template: ./unit-tests-stage.yml
+  - template: ./sonarqube-stage.yml
+  - template: ./build-and-push-image-stage.yml
+  - template: ./bash-stage.yml
