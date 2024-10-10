@@ -1,8 +1,8 @@
-# Proyecto: Dummy Test App - Documentación
+# 🧪 Proyecto: Dummy Test App - Documentación
 
 Este documento describe el proceso que se siguió para poner en marcha la aplicación Dummy Test App utilizando herramientas como SonarQube, Docker, Kubernetes, Minikube y Azure DevOps, entre otras.
 
-## Procedimento
+## 📝 Procedimento
 
 La prueba consiste en completar los siguientes pasos:
 
@@ -20,7 +20,7 @@ La prueba consiste en completar los siguientes pasos:
 - Crea un endpoint externo accesible (ingress) para la aplicación
 - Sube al repo en una carpeta environment todos los yaml de k8s.
 
-## Resumen
+## 📖 Resumen
 
 Esta prueba se realizó en entorno local basado en **Linux / Fedora 40** por lo cual los comandos de instalación y paquetes utilizados van a diferir si se quiere realizar la configuración de la aplicación en un entorno --Windows-- o --Ubuntu--
 
@@ -29,7 +29,7 @@ Esta prueba se realizó en entorno local basado en **Linux / Fedora 40** por lo 
 
 Tambien se dá por sentado que, quien sigue esta guía, tiene conocimientos de git y ya ha trabajado con Visual Studio Code previamente, puesto que es estrictamente necesario tener ambas herramientas instaladas.
 
-## Prerrequisitos
+## 🛠️ Prerrequisitos
 
 Para ejecutar este proyecto, es necesario contar con las siguientes herramientas instaladas:
 
@@ -60,7 +60,7 @@ Para ejecutar este proyecto, es necesario contar con las siguientes herramientas
 9. **Git**: Para administrar el repositorio local y remoto.
    - [Git](https://git-scm.com/)
 
-## Configuraciones
+## ⚙️ Configuraciones
 
 ### 1. Configuración de Azure DevOps
 
@@ -108,7 +108,7 @@ Una vez creado el Agente Self-Hosted se puede ver en `Settings / Agent pools / D
 
 ![self-host-agent](Printscreens/Azure-DevOps/self-host-agent.png)
 
-### 2. Descargar el Repositorio del Framework
+### 📚 2. Descargar el Repositorio del Framework
 
 Para esta prueba decidí ultilizar el framework de Node.js especificamente la app de prueba [reactnginx](https://github.com/docker/awesome-compose/tree/master/react-nginx).
 
@@ -178,7 +178,7 @@ Pruebas:
 
 ![app-pruebas](Printscreens/App-Local/app-pruebas.png)
 
-### 3. Configuración de Docker
+### 🐋 3. Configuración de Docker
 
 #### 3.1. Instalar Docker Desktop
 
@@ -217,7 +217,7 @@ minikube addons enable ingress
 minikube addons enable ingress-dns
 ```
 
-### 4. Configuración de SonarQube
+### 📡 4. Configuración de SonarQube
 
 Ya que tenemos Docker Desktop instalado podemos instalar SonarQube en su versión contenedor. El proceso es sencillo y directo.
 
@@ -252,7 +252,7 @@ sonar.test.inclusions=**/*.test.js
 sonar.javascript.lcov.reportPaths=/home/carlosmarte/myagent/_work/1/s/react-nginx/coverage/lcov.info
 ```
 
-### 5. Configuración de Azure Pipeline
+### ♾️ 5. Configuración de Azure Pipeline
 
 #### 5.1. Creación archivo **azure-pipelines.yml**
 
@@ -400,7 +400,7 @@ Nice!
 
 ![run-pipeline](Printscreens/Azure-DevOps/run-pipeline.png)
 
-## Procedimentos
+## 🎯 Procedimentos
 
 ### Compila la aplicación luego de pasar el analisis de sonarqube
 
