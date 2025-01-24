@@ -295,7 +295,7 @@ Algunas consideraciones:
 
 **Uso centralizado de variables:** Las variables han sido centralizadas en un archivo único.
 
-***Estructura de directorios:**
+***Estructura de directorios:***
 
 ```bash
 .azure-devops/
